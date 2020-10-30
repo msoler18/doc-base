@@ -1,0 +1,3 @@
+# some-project
+
+Documentación para el proyecto...

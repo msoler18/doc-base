@@ -1,0 +1,56 @@
+.tooltip {
+  position: relative;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.25s linear 1s, opacity 0.25s linear;
+  -webkit-transition: visibility 0.25s linear 1.2s, opacity 0.25s linear;
+  -o-transition: visibility 0.25s linear 1s, opacity 0.25s linear;
+  -moz-transition: visibility 0.25s linear 1s, opacity 0.25s linear;
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 21;
+  bottom: 100%;
+  left: 10%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip .tooltiptext:hover {
+  visibility: hidden;
+}
+
+.github-corner {
+  display:none;
+}
+
+.app-name-link,
+.gradi-color,
+.active {
+  color:#33dd82!important;
+}
+
+.search {
+  display:none!important;
+}
+
+.sidebar-nav li.active>a, 
+.sidebar-nav li.collapse>a {
+  color:#33dd82!important;
+  border-color:#33dd82!important;
+}
+
+
+.sidebar-nav li.collapse>a[href^="#/"]:not([href*="?id="]):not(:only-child),
+.sidebar-nav li>a[href^="#/"]:not([href*="?id="]):not(:only-child) {
+  background-image: unset!important;
+}

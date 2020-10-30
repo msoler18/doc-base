@@ -1,0 +1,38 @@
+# editorconfig.org
+# EditorConfig is awesome: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+insert_final_newline = false
+trim_trailing_whitespace = true
+
+# Indentation override for all JS under lib directory
+[*.{js,jsx,ts,tsx}]
+indent_style = space
+indent_size = 4
+
+# Matches the exact files either package.json or .travis.yml
+[{gulpfile.js,gulpfile.babel.js,package.json,.eslintrc,.eslintrc.json,.babelrc,nodemon.json,webpack.config.js,config.yml,config-default.yml}]
+indent_size = 2
+indent_style = space
+insert_final_newline = false
+
+[*.{json,yml}]
+indent_size = 2
+indent_style = space
+
+# styles files
+[*.{css,scss,less}]
+indent_size = 2
+
+[*.md]
+indent_size = 2
+indent_style = space
+trim_trailing_whitespace = false

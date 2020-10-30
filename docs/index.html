@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Base de conocimiento Gradiweb</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <!-- Theme: docsify-darklight-theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@3/dist/docsify-themeable/style.min.css">
+
+    <!-- Theme: light | dark styles by docsify-themeable -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css" title="light">
+    <link rel="stylesheet alternative" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css" title="dark">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">We are building documentation...</div>
+    <script>
+        // Docsify config
+        window.$docsify = {
+            // GENERAL
+            // -----------------------------------------------------------------
+            name: 'Gradi Bookmarks',
+            repo: 'https://github.com/krobing/docsify-preset',
+            homepage: 'introduction.md',
+            coverpage: false,
+            loadSidebar: true,
+            loadNavbar: false,
+
+            // NAVIGATION
+            // -----------------------------------------------------------------
+            auto2top: true,
+            maxLevel: 3,
+            subMaxLevel: 3,
+
+            // PLUGINS
+            // -----------------------------------------------------------------
+            search: {
+                noData: {
+                    '/': 'No results!'
+                },
+                paths: 'auto',
+                placeholder: {
+                    '/': 'Type to search'
+                }
+            },
+            plugins: [
+                function (hook) {
+                    var footer = [
+                        '<footer style="text-align: center; margin-top: 50px;">',
+                        '<span>',
+                        '<a href="https://www.gradiweb.com/" target="_blank" rel="noopener">Made with love and coffee by <span class="gradi-color">Gradiweb</span></a>',
+                        '&copy; 2020',
+                        '</span>',
+                        '</footer>'
+                    ].join('\n');
+
+                    hook.afterEach(function (html) {
+                        return html + footer;
+                    });
+                }
+            ],
+        }
+
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <!-- docsify -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+    <!-- Theme: docsify-darklight-theme / docsify-themeable -->
+    <script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@3/dist/docsify-themeable/main.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@3/dist/docsify-themeable/index.min.js"></script>
+    <!-- docsify plugins -->
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/external-script.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+    <!-- languages syntax -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-yaml.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-scss.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-jsx.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-tsx.min.js"></script>
+    <!-- Mermaid -->
+    <!-- <script src="//unpkg.com/mermaid/dist/mermaid.js"></script>
+    <script src="//unpkg.com/docsify-mermaid@latest/dist/docsify-mermaid.js">
+    // <script>mermaid.initialize({ startOnLoad: true });</script> -->
+</body>
+
+</html>
