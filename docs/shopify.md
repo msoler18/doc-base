@@ -70,7 +70,7 @@
 
 Lo primero que debemos tener en cuenta es que por defecto ReCharge tiene unos métodos en el archivo _assets/\_scripts.js_ que nos ayudan a realizar este tipo de redirecciones. Sólo es necesario seguir los siguientes pasos para hacer una redirección exitosa.
 
-1. El formulario debe tener un id que comience con _"ReChargeForm\_"_:
+1. El formulario debe tener un id que comience con "ReChargeForm\_":
    ```html
    <form action="{{ my_url }}" method="POST" id="ReChargeForm_myform">
      /.../
@@ -93,7 +93,7 @@ Lo primero que debemos tener en cuenta es que por defecto ReCharge tiene unos m�
    ```
 4. Por último hay que tener en cuenta que en algunas ocaciones ReCharge tiene propiedades que son requeridas para que se pueda realizar con éxito el envio de los datos.
 
-   Un ejemplo es que para [crear una suscribción](https://theme.rechargepayments.com/v2/#post-create-subscription) se deben enviar los siguientes datos obligatoriamente:
+   Un ejemplo es que para [crear una suscripción](https://theme.rechargepayments.com/v2/#post-create-subscription) se deben enviar los siguientes datos obligatoriamente:
 
    - Shopify variant ID
    - Order interval frequency
