@@ -12,9 +12,7 @@
 
 ## 1.2. Recharge Payments
 
-### Features
-
-#### Agregar estilos dependiendo de la url actual.
+### Agregar estilos dependiendo de la url actual.
 
 - URL: https://www.facebook.com/home
 
@@ -66,7 +64,7 @@
 </header>
 ```
 
-#### Redireciones al hacer submit
+### Redireciones al hacer submit
 
 Lo primero que debemos tener en cuenta es que por defecto ReCharge tiene unos métodos en el archivo _assets/\_scripts.js_ que nos ayudan a realizar este tipo de redirecciones. Sólo es necesario seguir los siguientes pasos para hacer una redirección exitosa.
 
@@ -148,6 +146,66 @@ Lo primero que debemos tener en cuenta es que por defecto ReCharge tiene unos m�
      <button type="submit">Submit</button>
    </form>
    ```
+
+### Inyectar información de la API con JavaScript
+
+En algunas ocaciones la única forma de poder mostrar información de una suscriptión, orden, dirección, etc. es a través de haciendo la petición a la API de ReCharge e inyectarla con JavaScript.
+
+Explicaremos esto con un ejemplo, trayendo las lista de suscripciones:
+
+Esta podría ser una sección:
+
+```html
+<!-- file.html -->
+<div id="container">
+  <span>Loading...</span>
+</div>
+```
+
+1. Debemos hacer la petición a la API de ReCharge. Yo crearé una función que me traiga las suscripciones. Como es una petición a una API debe ser una función asíncrona porque esto tomará algo de tiempo:
+
+```js
+async function getSubscriptions() {
+  let schema =
+    '{ "addresses": { "discount": { "id": "parent.discount_id" } }, "subscriptions": { "product": {} }, "onetimes": { "product": {} }, "customer": {}, "settings": {}, "store": {} }';
+  let url = `{{ shopify_proxy_url if proxy_redirect else "" }}/portal/{{ customer.hash }}/request_objects?token=${window.customerToken}&schema=${schema}`;
+
+  try {
+    const response = await fetch(url, { method: "POST" });
+    const data = await response.json();
+
+    // Devuelve un arreglo con las suscriptiones
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+}
+```
+
+2. Traemos el elemento con el id _container_ del DOM. Dentro de este elemento vamos a inyectar la información que traigamos de la API:
+
+```js
+const $container = document.getElementById("container");
+```
+
+3. Llamamos la funcion _getSubscriptions_ e inyectamos el html dentro del div con id _container_:
+
+```js
+getSubscriptions()
+  .then(({ subscriptions }) => {
+    let content = "";
+    subscriptions.forEach((sub) => {
+      const template = `<div class="item">${sub.title}</div>`;
+      content += template;
+    });
+
+    $container.innerHTML = content;
+  })
+  .catch((err) => {
+    $container.innerHTML = "Server internal error";
+    console.error(err);
+  });
+```
 
 ### Configuraciones
 
