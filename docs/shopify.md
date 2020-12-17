@@ -164,48 +164,48 @@ Esta podría ser una sección:
 
 1. Debemos hacer la petición a la API de ReCharge. Yo crearé una función que me traiga las suscripciones. Como es una petición a una API debe ser una función asíncrona porque esto tomará algo de tiempo:
 
-```js
-async function getSubscriptions() {
-  let schema =
-    '{ "addresses": { "discount": { "id": "parent.discount_id" } }, "subscriptions": { "product": {} }, "onetimes": { "product": {} }, "customer": {}, "settings": {}, "store": {} }';
-  let url = `{{ shopify_proxy_url if proxy_redirect else "" }}/portal/{{ customer.hash }}/request_objects?token=${window.customerToken}&schema=${schema}`;
+   ```js
+   async function getSubscriptions() {
+     let schema =
+       '{ "addresses": { "discount": { "id": "parent.discount_id" } }, "subscriptions": { "product": {} }, "onetimes": { "product": {} }, "customer": {}, "settings": {}, "store": {} }';
+     let url = `{{ shopify_proxy_url if proxy_redirect else "" }}/portal/{{ customer.hash }}/request_objects?token=${window.customerToken}&schema=${schema}`;
 
-  try {
-    const response = await fetch(url, { method: "POST" });
-    const data = await response.json();
+     try {
+       const response = await fetch(url, { method: "POST" });
+       const data = await response.json();
 
-    // Devuelve un arreglo con las suscriptiones
-    return data;
-  } catch (err) {
-    console.error(err);
-  }
-}
-```
+       // Devuelve un arreglo con las suscriptiones
+       return data;
+     } catch (err) {
+       console.error(err);
+     }
+   }
+   ```
 
 2. Traemos el elemento con el id _container_ del DOM. Dentro de este elemento vamos a inyectar la información que traigamos de la API:
 
-```js
-const $container = document.getElementById("container");
-```
+   ```js
+   const $container = document.getElementById("container");
+   ```
 
 3. Llamamos la funcion _getSubscriptions_ e inyectamos el html dentro del div con id _container_:
 
-```js
-getSubscriptions()
-  .then(({ subscriptions }) => {
-    let content = "";
-    subscriptions.forEach((sub) => {
-      const template = `<div class="item">${sub.title}</div>`;
-      content += template;
-    });
+   ```js
+   getSubscriptions()
+     .then(({ subscriptions }) => {
+       let content = "";
+       subscriptions.forEach((sub) => {
+         const template = `<div class="item">${sub.title}</div>`;
+         content += template;
+       });
 
-    $container.innerHTML = content;
-  })
-  .catch((err) => {
-    $container.innerHTML = "Server internal error";
-    console.error(err);
-  });
-```
+       $container.innerHTML = content;
+     })
+     .catch((err) => {
+       $container.innerHTML = "Server internal error";
+       console.error(err);
+     });
+   ```
 
 ### Configuraciones
 
