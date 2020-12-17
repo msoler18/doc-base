@@ -160,6 +160,10 @@ Esta podría ser una sección:
 <div id="container">
   <span>Loading...</span>
 </div>
+
+<script>
+  /*...*/
+</script>
 ```
 
 1. Debemos hacer la petición a la API de ReCharge. Yo crearé una función que me traiga las suscripciones. Como es una petición a una API debe ser una función asíncrona porque esto tomará algo de tiempo:
@@ -206,6 +210,21 @@ Esta podría ser una sección:
        console.error(err);
      });
    ```
+
+- Output:
+
+  ```html
+  <div id="container">
+    <div class="item">Title #1</div>
+    <div class="item">Title #2</div>
+    <div class="item">Title #3</div>
+    <div class="item">Title #4</div>
+    <div class="item">Title #5</div>
+    <div class="item">Title #6</div>
+    <div class="item">Title #7</div>
+    <div class="item">Title #8</div>
+  </div>
+  ```
 
 ### Configuraciones
 
